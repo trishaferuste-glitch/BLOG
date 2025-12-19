@@ -13,7 +13,14 @@
 
         body {
             font-family: 'Georgia', 'Times New Roman', serif;
-            background: #f5f5f5;
+            background:
+                radial-gradient(circle at 20% 30%, rgba(255, 180, 180, 0.8) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 192, 203, 0.7) 0%, transparent 50%),
+                radial-gradient(circle at 30% 60%, rgba(255, 218, 185, 0.8) 0%, transparent 50%),
+                radial-gradient(circle at 70% 70%, rgba(224, 255, 255, 0.9) 0%, transparent 50%),
+                radial-gradient(circle at 10% 80%, rgba(240, 255, 240, 0.6) 0%, transparent 50%),
+                radial-gradient(circle at 90% 80%, rgba(221, 160, 221, 0.7) 0%, transparent 50%),
+                linear-gradient(135deg, #FFE4E1 0%, #E0F6FF 50%, #FFF0F5 100%);
             min-height: 100vh;
             display: flex;
             flex-direction: column;
@@ -21,50 +28,55 @@
             position: relative;
         }
 
-        /* Header */
-        header {
-            background: #fff;
-            color: #333;
-            padding: 25px 40px;
-            display: flex;
-            justify-content: space-between;
+        /* Header (menu on right, title centered) */
+        header.topbar {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(8px);
+            padding: 18px 40px;
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
             align-items: center;
+            gap: 20px;
             position: sticky;
             top: 0;
             z-index: 100;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
         }
 
-        .logo {
+        .brand {
             font-size: 2rem;
             font-weight: normal;
             letter-spacing: 1px;
             font-family: 'Georgia', 'Times New Roman', serif;
             color: #000;
             line-height: 1.3;
+            text-align: center;
+            white-space: nowrap;
         }
 
-        nav {
+        nav.nav-group {
             display: flex;
-            gap: 25px;
+            gap: 28px;
             font-family: 'Arial', 'Helvetica', sans-serif;
+            align-items: center;
+            justify-content: flex-end;
         }
 
-        nav a {
-            color: #333;
+        nav.nav-group a {
+            color: #000;
             text-decoration: none;
-            font-size: 0.95rem;
-            letter-spacing: 0.5px;
-            transition: color 0.3s ease;
-            position: relative;
+            font-size: 0.9rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            transition: opacity 0.3s ease;
         }
 
-        nav a:hover {
-            color: #cc6600;
+        nav.nav-group a:hover {
+            opacity: 0.8;
         }
 
-        nav a.active {
-            color: #cc6600;
+        nav.nav-group a.active {
+            font-weight: bold;
         }
 
         /* Main Content */
@@ -87,13 +99,14 @@
         }
 
         .quote-card {
-            background: #fff;
-            border-radius: 20px 20px 0 0;
+            background: transparent;
+            border-radius: 12px;
             padding: 60px;
             display: flex;
             gap: 40px;
             align-items: center;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            border: 1px solid #FFB4B4;
             position: relative;
         }
 
@@ -125,25 +138,21 @@
 
         /* Responsive */
         @media (max-width: 768px) {
-            header {
-                flex-direction: column;
-                gap: 15px;
+            header.topbar {
+                grid-template-columns: 1fr;
+                gap: 10px;
                 padding: 15px 20px;
-            }
-
-            .logo {
-                font-size: 1.5rem;
                 text-align: center;
             }
 
-            nav {
-                gap: 15px;
-                flex-wrap: wrap;
-                justify-content: center;
+            .brand {
+                font-size: 1.6rem;
             }
 
-            nav a {
-                font-size: 0.85rem;
+            nav.nav-group {
+                gap: 14px;
+                flex-wrap: wrap;
+                justify-content: center;
             }
 
             .quote-card {
@@ -169,11 +178,10 @@
     </style>
 </head>
 <body>
-    <header>
-        <div class="logo">
-            <span>Trisha Fe</span>
-        </div>
-        <nav>
+    <header class="topbar">
+        <div></div>
+        <div class="brand">INTERNSHIP</div>
+        <nav class="nav-group">
             <a href="index.html">Home</a>
             <a href="blog.html">Blog</a>
             <a href="about.html" class="active">About Me</a>
