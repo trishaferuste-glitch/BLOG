@@ -130,8 +130,9 @@
             height: auto;
             display: block;
             background: transparent;
-            /* Ensure transparent background is preserved */
-            mix-blend-mode: normal;
+            /* Ensure transparent background is preserved - PNG transparency will show through */
+            object-fit: contain;
+            filter: none;
         }
 
         .content-box {
