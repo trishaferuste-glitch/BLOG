@@ -91,7 +91,22 @@
         }
 
         .ncip-logo {
-            width: 120px;
+            width: 80px;
+            height: auto;
+            display: block;
+            background: transparent;
+            object-fit: contain;
+        }
+
+        .bagong-logo-container {
+            flex: 0 0 auto;
+            display: flex;
+            align-items: flex-start;
+            padding-top: 20px;
+        }
+
+        .bagong-logo {
+            width: 80px;
             height: auto;
             display: block;
             background: transparent;
@@ -148,7 +163,14 @@
                 justify-content: center;
             }
             .ncip-logo {
-                width: 100px;
+                width: 70px;
+            }
+            .bagong-logo-container {
+                padding-top: 0;
+                justify-content: center;
+            }
+            .bagong-logo {
+                width: 70px;
             }
             .content-box { padding: 40px 20px; }
         }
@@ -168,11 +190,11 @@
     </header>
 
     <main class="main-content">
-        <div class="bagong-logo-container">
-            <img src="img/bagonglogo.jpg" alt="Bagong Pilipinas Logo" class="bagong-logo">
-        </div>
         <div class="ncip-logo-container">
             <img src="img/NCIPLOGO.png" alt="NCIP Logo" class="ncip-logo">
+        </div>
+        <div class="bagong-logo-container">
+            <img src="img/bagonglogo.jpg" alt="Bagong Pilipinas Logo" class="bagong-logo">
         </div>
     </main>
 </body>
