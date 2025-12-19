@@ -74,25 +74,28 @@
             font-weight: bold;
         }
 
-        .ncip-logo-container {
-            display: flex;
-            align-items: center;
-            justify-content: flex-start;
-        }
-
-        .ncip-logo {
-            width: 60px;
-            height: 60px;
-            display: block;
-            background: transparent;
-            object-fit: contain;
-        }
-
         .main-content {
             flex: 1;
             display: flex;
             justify-content: center;
+            align-items: flex-start;
             padding: 40px 20px 60px;
+            gap: 30px;
+        }
+
+        .ncip-logo-container {
+            flex: 0 0 auto;
+            display: flex;
+            align-items: flex-start;
+            padding-top: 20px;
+        }
+
+        .ncip-logo {
+            width: 200px;
+            height: auto;
+            display: block;
+            background: transparent;
+            object-fit: contain;
         }
 
         .content-box {
@@ -136,12 +139,16 @@
                 flex-wrap: wrap;
                 justify-content: center;
             }
+            .main-content {
+                flex-direction: column;
+                align-items: center;
+            }
             .ncip-logo-container {
+                padding-top: 0;
                 justify-content: center;
             }
             .ncip-logo {
-                width: 50px;
-                height: 50px;
+                width: 150px;
             }
             .content-box { padding: 40px 20px; }
         }
@@ -149,9 +156,7 @@
 </head>
 <body>
     <header class="topbar">
-        <div class="ncip-logo-container">
-            <img src="img/NCIPLOGO.png" alt="NCIP Logo" class="ncip-logo">
-        </div>
+        <div></div>
         <div class="brand">INTERNSHIP</div>
         <nav class="nav-group">
             <a href="index.html">Home</a>
