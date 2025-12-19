@@ -91,7 +91,22 @@
         }
 
         .ncip-logo {
-            width: 200px;
+            width: 120px;
+            height: auto;
+            display: block;
+            background: transparent;
+            object-fit: contain;
+        }
+
+        .bagong-logo-container {
+            flex: 0 0 auto;
+            display: flex;
+            align-items: flex-start;
+            padding-top: 20px;
+        }
+
+        .bagong-logo {
+            width: 120px;
             height: auto;
             display: block;
             background: transparent;
@@ -148,7 +163,14 @@
                 justify-content: center;
             }
             .ncip-logo {
-                width: 150px;
+                width: 100px;
+            }
+            .bagong-logo-container {
+                padding-top: 0;
+                justify-content: center;
+            }
+            .bagong-logo {
+                width: 100px;
             }
             .content-box { padding: 40px 20px; }
         }
@@ -172,12 +194,14 @@
             <img src="img/NCIPLOGO.png" alt="NCIP Logo" class="ncip-logo">
         </div>
         <section class="content-box">
-            <h1 class="content-title">NCIP</h1>
             <p class="content-text">
                 This page uses the same design layout as the other pages. You can tell me what content you want to add
                 here (text, images, or blog-style cards), and I'll format it.
             </p>
         </section>
+        <div class="bagong-logo-container">
+            <img src="img/bagonglogo.jpg" alt="Bagong Pilipinas Logo" class="bagong-logo">
+        </div>
     </main>
 </body>
 </html>
