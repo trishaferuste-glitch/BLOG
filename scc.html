@@ -116,11 +116,35 @@
             padding: 40px 20px 60px;
         }
 
+        .scc-logo-section {
+            display: flex;
+            align-items: flex-start;
+            gap: 40px;
+            max-width: 1200px;
+            width: 100%;
+        }
+
+        .scc-logo {
+            flex: 0 0 auto;
+            width: 200px;
+            height: auto;
+        }
+
+        .scc-logo img {
+            width: 100%;
+            height: auto;
+            display: block;
+            background: transparent;
+            /* Remove black background and make transparent */
+            mix-blend-mode: multiply;
+            /* Additional filter to help with black background removal */
+            filter: contrast(1.1) brightness(1.05);
+        }
+
         .content-box {
             background: transparent;
             padding: 50px 60px;
-            max-width: 900px;
-            width: 100%;
+            flex: 1;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
             border: 1px solid #FFB4B4;
         }
@@ -149,6 +173,16 @@
             .hero-overlay { padding: 18px; flex-direction: column; align-items: flex-start; gap: 10px; }
             .hero-left, .hero-right { max-width: 100%; text-align: left; }
             .hero-line { font-size: 2.2rem; }
+            .scc-logo-section {
+                flex-direction: column;
+                align-items: center;
+                gap: 30px;
+            }
+
+            .scc-logo {
+                width: 150px;
+            }
+
             .content-box { padding: 40px 20px; }
         }
     </style>
@@ -184,13 +218,18 @@
     </section>
 
     <main class="main-content">
-        <section class="content-box">
+        <div class="scc-logo-section">
+            <div class="scc-logo">
+                <img src="./img/LOGO CO.png" alt="SCC Logo">
+            </div>
+            <section class="content-box">
             <h1 class="content-title">SCC</h1>
             <p class="content-text">
                 This page uses the same design layout as the other pages. You can tell me what content you want to add
                 here (text, images, or blog-style cards), and I’ll format it.
             </p>
         </section>
+        </div>
     </main>
 </body>
 </html>
