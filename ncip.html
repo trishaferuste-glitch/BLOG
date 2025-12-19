@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NCIP - BLOG JOURNAL</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            /* keep the same system background */
+            background:
+                radial-gradient(circle at 20% 30%, rgba(255, 180, 180, 0.8) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 192, 203, 0.7) 0%, transparent 50%),
+                radial-gradient(circle at 30% 60%, rgba(255, 218, 185, 0.8) 0%, transparent 50%),
+                radial-gradient(circle at 70% 70%, rgba(224, 255, 255, 0.9) 0%, transparent 50%),
+                radial-gradient(circle at 10% 80%, rgba(240, 255, 240, 0.6) 0%, transparent 50%),
+                radial-gradient(circle at 90% 80%, rgba(221, 160, 221, 0.7) 0%, transparent 50%),
+                linear-gradient(135deg, #FFE4E1 0%, #E0F6FF 50%, #FFF0F5 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            color: #333;
+        }
+
+        header.topbar {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(8px);
+            padding: 18px 40px;
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            align-items: center;
+            gap: 20px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .brand {
+            font-size: 2rem;
+            font-weight: normal;
+            letter-spacing: 1px;
+            font-family: 'Georgia', 'Times New Roman', serif;
+            color: #000;
+            line-height: 1.3;
+            text-align: center;
+            white-space: nowrap;
+        }
+
+        nav.nav-group {
+            display: flex;
+            gap: 28px;
+            font-family: 'Arial', 'Helvetica', sans-serif;
+            align-items: center;
+            justify-content: flex-end;
+        }
+
+        nav.nav-group a {
+            color: #000;
+            text-decoration: none;
+            font-size: 0.9rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            transition: opacity 0.3s ease;
+        }
+
+        nav.nav-group a:hover { opacity: 0.8; }
+        nav.nav-group a.active { font-weight: bold; }
+
+        .main-content {
+            flex: 1;
+            padding: 30px 20px 60px;
+            display: flex;
+            justify-content: center;
+            flex-direction: column; /* allow content down side */
+            align-items: center;
+        }
+
+        .ncip-down {
+            width: min(1200px, 100%);
+            display: flex;
+            justify-content: space-between; /* left + right */
+            align-items: flex-start;
+        }
+
+        .ncip-down-left {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .ncip-down-logo {
+            width: 120px;
+            height: auto;
+            display: block;
+            background: transparent;
+            /* makes white pixels blend into background */
+            mix-blend-mode: multiply;
+        }
+
+        .ncip-down-text {
+            font-family: 'Arial', 'Helvetica', sans-serif;
+            color: #000;
+            text-transform: uppercase;
+            line-height: 1.25;
+        }
+
+        .ncip-down-text .small {
+            font-size: 0.85rem;
+            letter-spacing: 0.3px;
+            opacity: 0.95;
+        }
+
+        .ncip-down-text .strong {
+            font-size: 1.05rem;
+            font-weight: 800;
+            letter-spacing: 0.4px;
+            margin-top: 2px;
+        }
+
+        .ncip-down-logo.right {
+            margin-left: auto;
+        }
+
+        .ncip-poster {
+            width: min(1200px, 100%);
+            margin-top: 22px;
+        }
+
+        .ncip-poster-img {
+            width: 100%;
+            display: block;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.10);
+            border: 1px solid rgba(255, 180, 180, 0.35);
+        }
+
+        /* transparent/no-box style (for images you want without background) */
+        .ncip-poster-img.transparent {
+            border-radius: 0;
+            box-shadow: none;
+            border: none;
+            background: transparent;
+        }
+
+        /* Mandate / Vision / Mission (text only, no background) */
+        .mvm {
+            width: min(1200px, 100%);
+            margin-top: 22px;
+        }
+
+        .mvm-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(220px, 1fr));
+            gap: 22px;
+            align-items: start;
+        }
+
+        .mvm-card {
+            background: transparent; /* no background */
+            border: 1px solid rgba(255, 180, 180, 0.45);
+            border-radius: 12px;
+            padding: 18px 18px 16px;
+        }
+
+        .mvm-title {
+            font-family: 'Arial', 'Helvetica', sans-serif;
+            font-weight: 900;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: #000;
+            font-size: 1.25rem;
+            margin-bottom: 10px;
+        }
+
+        .mvm-text {
+            font-family: 'Arial', 'Helvetica', sans-serif;
+            color: #000; /* black words */
+            font-size: 0.98rem;
+            line-height: 1.7;
+        }
+
+        @media (max-width: 768px) {
+            header.topbar {
+                grid-template-columns: 1fr;
+                gap: 10px;
+                padding: 15px 20px;
+                text-align: center;
+            }
+
+            nav.nav-group {
+                gap: 14px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .brand { font-size: 1.6rem; }
+
+            .ncip-down-logo {
+                width: 100px;
+            }
+
+            .ncip-down {
+                align-items: center;
+            }
+
+            .ncip-down-left {
+                gap: 10px;
+            }
+
+            .ncip-down-text .small {
+                font-size: 0.78rem;
+            }
+
+            .ncip-down-text .strong {
+                font-size: 0.92rem;
+            }
+
+            .mvm-grid {
+                grid-template-columns: 1fr;
+            }
+
+        }
+    </style>
+</head>
+<body>
+    <header class="topbar">
+        <div></div>
+        <div class="brand">BLOG JOURNAL</div>
+        <nav class="nav-group">
+            <a href="index.html">Home</a>
+            <a href="blog.html">Blog</a>
+            <a href="about.html">About Me</a>
+            <a href="ncip.html" class="active">NCIP</a>
+            <a href="#">SCC</a>
+        </nav>
+    </header>
+
+    <div class="main-content">
+        <div class="ncip-down">
+            <div class="ncip-down-left">
+                <img class="ncip-down-logo" src="img/NCIPLOGO.png" alt="NCIP Logo">
+                <div class="ncip-down-text">
+                    <div class="small">REPUBLIC OF THE PHILIPPINES</div>
+                    <div class="small">OFFICE OF THE PRESIDENT</div>
+                    <div class="strong">NATIONAL COMMISION ON INDIGENOUSE PEOPLE</div>
+                </div>
+            </div>
+            <img class="ncip-down-logo right" src="img/bagonglogo.jpg" alt="Bagong Pilipinas logo">
+        </div>
+
+        <div class="ncip-poster">
+            <img
+                class="ncip-poster-img"
+                src="file:///C:/Users/acer/.cursor/projects/c-Users-acer-Downloads-BLOG/assets/c__Users_acer_AppData_Roaming_Cursor_User_workspaceStorage_f7afdc00ac725f84594c8b704aa19e7c_images_image-a60909d1-7603-445d-8a49-4e0a910cd068.png"
+                alt="Indigenous Peoples Month and IPRA Commemoration poster"
+            >
+        </div>
+
+        <section class="mvm" aria-label="Mandate Vision Mission">
+            <div class="mvm-grid">
+                <div class="mvm-card">
+                    <div class="mvm-title">Mandate</div>
+                    <div class="mvm-text">
+                        The NCIP shall protect and promote the interest and well-being of the ICCs/IPs with due regard to their beliefs, customs, traditions and institutions.
+                    </div>
+                </div>
+                <div class="mvm-card">
+                    <div class="mvm-title">Vision</div>
+                    <div class="mvm-text">
+                        By 2040, all Philippine Indigenous Cultural Communities/Indigenous Peoples will be fully empowered, their rights genuinely fulfilled and realized, their cultural heritage observed, respected, and preserved, and their ancestral domains and land sustainably protected and developed, ensuring active participation and contribution to nation-building with their identity remaining intact as they adapt to evolving times, and thus securing a lasting legacy for future generations.
+                    </div>
+                </div>
+                <div class="mvm-card">
+                    <div class="mvm-title">Mission</div>
+                    <div class="mvm-text">
+                        A trusted partner and lead advocate of ICCs/IPs in upholding their rights and well-being as enshrined in the Indigenous Peoples' Rights Act.
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+</html>
